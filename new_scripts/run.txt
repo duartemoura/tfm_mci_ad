@@ -1,0 +1,7 @@
+python scripts/preprocessing/preprocess_adni.py
+python scripts/preprocessing/preprocess_3d.py
+python scripts/preprocessing/mci_conversion_split.py
+python scripts/preprocessing/create_kfold_datasets.py
+python scripts/model_training/train_ad_cn_model.py
+python scripts/model_training/train_mci_conversion_model.py
+python scripts/analysis/evaluate_models.py

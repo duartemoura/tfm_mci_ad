@@ -1,0 +1,29 @@
+# Core dependencies
+numpy
+pandas
+scikit-learn
+scipy
+
+# Deep Learning
+tensorflow
+keras
+keras-tuner
+
+# Medical Imaging
+nibabel
+SimpleITK
+nilearn
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Utilities
+tqdm
+joblib
+PyYAML
+
+# Optional but recommended
+jupyter
+ipykernel 
