@@ -294,3 +294,50 @@ def get_class_distribution(labels: np.ndarray) -> Dict[int, int]:
     """
     unique, counts = np.unique(labels, return_counts=True)
     return dict(zip(unique, counts)) 
+
+# ----------------------------------------------------------------------------
+# Compatibility helpers (used by older preprocessing scripts)
+# ----------------------------------------------------------------------------
+
+def load_nifti_image(file_path: Union[str, Path]) -> np.ndarray:
+    """Convenience wrapper around :func:`load_nifti` for legacy code."""
+    return load_nifti(file_path)
+
+
+def preprocess_image(image: np.ndarray,
+                     target_size: Tuple[int, int, int] = IMAGE_SIZE,
+                     normalize: bool = True,
+                     resize: bool = True) -> np.ndarray:
+    """Resize and/or z-score-normalise a 3-D image volume.
+
+    Parameters
+    ----------
+    image : np.ndarray
+        Raw 3-D image data.
+    target_size : tuple
+        Desired output shape (x, y, z).
+    normalize : bool
+        Whether to z-score the voxels (mean-0, std-1).
+    resize : bool
+        Whether to resample the volume to *target_size* using trilinear
+        interpolation.
+    """
+    if resize and image.shape != target_size:
+        # Import lazily to keep the base import footprint small.
+        from skimage.transform import resize as _resize
+        image = _resize(image, target_size, order=1, mode="constant", anti_aliasing=True)
+
+    if normalize:
+        mean = image.mean()
+        std = image.std() or 1.0
+        image = (image - mean) / std
+
+    return image.astype(np.float32)
+
+
+def create_tf_dataset(data: np.ndarray,
+                      labels: np.ndarray,
+                      batch_size: int = BATCH_SIZE,
+                      shuffle: bool = True) -> tf.data.Dataset:
+    """Alias for :func:`create_data_generator` kept for backward compatibility."""
+    return create_data_generator(data, labels, batch_size=batch_size, shuffle=shuffle) 

@@ -5,9 +5,11 @@ scikit-learn
 scipy
 
 # Deep Learning
-tensorflow
-keras
-keras-tuner
+torch
+torchvision
+torchaudio
+# Hyperparameter tuning (optional)
+optuna
 
 # Medical Imaging
 nibabel
@@ -27,3 +29,5 @@ PyYAML
 # Optional but recommended
 jupyter
 ipykernel 
+scikit-image 
+dicom2nifti  # DICOM → NIfTI conversion tool (also installs pydicom) 

@@ -33,6 +33,13 @@ BATCH_SIZE = 32
 NUM_CLASSES = 2  # Binary classification
 N_SPLITS = 5  # Number of folds for cross-validation
 
+# Backwards-compatibility constants -------------------------------------------------
+# Some legacy modules still expect the names ``NEW_DATA_DIR`` and ``NUM_FOLDS``.
+# We map those to the new canonical locations so that both old and new code work.
+NEW_DATA_DIR = PROCESSED_DATA_DIR / 'images'
+NUM_FOLDS = N_SPLITS
+# -----------------------------------------------------------------------------------
+
 # Model parameters
 LEARNING_RATE = 1e-4
 EPOCHS = 100
