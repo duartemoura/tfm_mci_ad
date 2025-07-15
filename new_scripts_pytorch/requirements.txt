@@ -1,0 +1,34 @@
+# Core dependencies
+numpy
+pandas
+scikit-learn
+scipy
+
+# Deep Learning
+torch
+torchvision
+torchaudio
+# Hyperparameter tuning (optional)
+optuna
+tensorboard
+
+# Medical Imaging
+nibabel
+SimpleITK
+nilearn
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Utilities
+tqdm
+joblib
+PyYAML
+
+# Optional but recommended
+jupyter
+ipykernel 
+scikit-image 
+dicom2nifti  # DICOM → NIfTI conversion tool (also installs pydicom) 
